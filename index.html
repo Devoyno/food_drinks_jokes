@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>What's for Dinner</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
   </head>
@@ -89,25 +89,16 @@
                 <div class="columns is-mobile">
                     <div class="column">
                         <div class="field">
-                            <div class="select">
-                                <select>
+                            <div class="select" >
+                                <select id="ingredient">
                                   <option>main ingredient</option>
-                                  <option>gin</option>
-                                  <option>vodka</option>
-                                  <option>whiskey</option>
-                                  <option>tequila</option>
-                                  <option>rum</option>
-                                  <option>champagne</option>
-                                  <option>moonshine</option>
-                                </select>
-                              </div>
-                              <div class="select">
-                                <select>
-                                  <option>prep time</option>
-                                  <option>5-10 min</option>
-                                  <option>10-20 min</option>
-                                  <option>20-30 min</option>
-                                  <option>30min +</option>
+                                  <option>Gin</option>
+                                  <option>Vodka</option>
+                                  <option>Whiskey</option>
+                                  <option>Tequila</option>
+                                  <option>Rum</option>
+                                  <option>Champagne</option>
+                                  <option>Everclear</option>
                                 </select>
                               </div>
                         </div>
@@ -115,10 +106,10 @@
                     </div>
                     <div class="column">
                         <div class="buttons">
-                            <button class="button is-primary">run search criteria</button>
+                            <button class="button is-primary" id="criteria">run search criteria</button>
                         </div>
                         <div class="buttons">
-                            <button class="button is-primary">roll the dice (random)</button>
+                            <button class="button is-primary" id="randomDrink">roll the dice (random)</button>
                         </div>
                     </div>
                 </div>
@@ -129,7 +120,8 @@
                     <img id="drink-image" src="" alt="">
                 </figure>
                 <div>
-                    <p id="drink-ingredients">ingredients</p>
+                    <p>ingredients:</p>
+                    <div id="drink-ingredients"></div>
                 </div>
                 <div>
                     <p id="drink-directions">directions</p>
@@ -139,7 +131,7 @@
                 </div>
             </div>
         </div>                
-        <div class="columns" id="jokes">
+        <div class="columns jokes">
             <div class="column">
                 <h1>Joke time!!</h1>
                 <div>
@@ -149,13 +141,14 @@
         </div>
         <footer class="footer">
             <div class="content has-text-centered">
-              <p>Professionally designed by: Brian, Jack and, mike.</p>
+              <p>Professionally designed by: Brian, Jack, and Mike.</p>
             </div>
           </footer>
     </div>
   </section>
   </body>
-  <script></script>
-  <script></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="jokes.js"></script>
+  <script src="drinks.js"></script>
   <script></script>
 </html>

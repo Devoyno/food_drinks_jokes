@@ -1,19 +1,27 @@
 .hero-body {
     text-align: center;
-    background-color: grey;
+    border: 2px solid black;
+    border-radius: 5px;
 }
 #storedRecipe {
     
 }
 #recipe {
-    background-color: cadetblue;
+    border: 2px solid black;
+    border-radius: 5px;
 }
 #drinks {
-    background-color: coral;
+    border: 2px solid black;
+    border-radius: 5px;
 }
-#jokes {
-    background-color: grey;
-}
-#jokes {
+.jokes {
+    border: 2px solid black;
+    border-radius: 5px;
     text-align: center;
+    font-size: larger;
+}
+footer {
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: x-large;
 }
