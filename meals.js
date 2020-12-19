@@ -1,13 +1,14 @@
 // When the Random Meal button is clicked,
 $("#randomRecipe").click(function(event){
     event.preventDefault();
-    getRandomMeal();
+    var searchType = "random.php";
+    getMeal(searchType);
 });
 // Function to get the random meal
-function getRandomMeal(){
-    var randomURL = "https://www.themealdb.com/api/json/v1/1/random.php";
+function getMeal(searchType){
+    var queryURL = "https://www.themealdb.com/api/json/v1/1/" + searchType;
     $.ajax({
-        url: randomURL,
+        url: queryURL,
         method: "GET"
     })
     .then(function(response){
