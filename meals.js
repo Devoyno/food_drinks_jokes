@@ -13,6 +13,7 @@ function getMeal(searchType){
     })
     .then(function(response){
         console.log(response);
+        $("#recipe-ingredients").empty();
         var recipeTitle = response.meals[0].strMeal;
         $("#recipe-title").text(recipeTitle);
         var recipeImage = response.meals[0].strMealThumb;
@@ -20,7 +21,7 @@ function getMeal(searchType){
         $("#recipe-image").attr("alt", recipeTitle);
         $("#recipe-image").attr("title", recipeTitle);
         for (i = 1; i < 21; i++){
-            if (response.meals[0]["strMeasure" + i.toString()] === ""){
+            if (!response.meals[0]["strMeasure" + i.toString()]){
             }
             var newIngred = $("<li>").text(response.meals[0]["strMeasure" + i.toString()] + " " + response.meals[0]["strIngredient" + i.toString()]);
             $("#recipe-ingredients").append(newIngred);
@@ -30,10 +31,10 @@ function getMeal(searchType){
     })
 };
 
-// When the user chooses a main ingrdient from a drop-down menu,
-// they want to use as the main ingredient,
+// When the user clicks the search button,
+// if the user types a meal name in the text field
 // and click the SEARCH button, 
-// it will return a random recipe that uses that main ingredient.
+// it will return a recipe that is named as such.
 
 // When the user chooses a meal type from a drop-down menu,
 // and presses the SEARCH button, 
