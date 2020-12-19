@@ -13,6 +13,7 @@ function getMeal(searchType){
     })
     .then(function(response){
         console.log(response);
+    $("#drinks-ingredients").empty();
         var recipeTitle = response.meals[0].strMeal;
         $("#recipe-title").text(recipeTitle);
         var recipeImage = response.meals[0].strMealThumb;
