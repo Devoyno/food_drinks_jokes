@@ -1,7 +1,17 @@
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+.buttons {
+    margin-top: 10px;
+}
+
 .hero-body {
     text-align: center;
     border: 2px solid black;
     border-radius: 5px;
+    background-image: url("https://wallpaperaccess.com/full/271679.jpg");
+    
 }
 #storedRecipe {
     
@@ -21,7 +31,6 @@
     font-size: larger;
 }
 footer {
-    border: 2px solid black;
-    border-radius: 5px;
-    font-size: x-large;
+    
+    font-size: 15px;
 }
