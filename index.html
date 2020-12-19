@@ -18,50 +18,43 @@
             </div>
         </div>
         <div class="buttons" id="StoredRecipe">
-            <button class="button is-primary">View saved recipes</button>
+            <button class="button is-primary" id="view-saved">View saved recipes</button>
         </div>
         <div class="columns" id="recipe">
-            <div class="column is-half">
-                <h1>First choose your meal (enter any or all fields)</h1>
+            <div class="column is-half" id="food">
+                <h2>First choose your meal (enter any or all fields):</h2>
                 <div class="columns is-mobile">
                     <div class="column">
                         <div class="field">
-                            <div class="select">
-                                <select>
-                                  <option>main ingredient</option>
-                                  <option>chicken</option>
-                                  <option>beef</option>
-                                  <option>pork</option>
-                                  <option>vegetarian</option>
-                                </select>
-                              </div>
+                            <div class="control">
+                                <input type="text" class="input" placeholder="Meal Name...">
+                            </div>
                         </div> 
                         <div>
                             <div class="select">
                                 <select>
-                                  <option>Meal Type</option>
+                                  <option>Meal Category</option>
+                                  <option>Beef</option>
                                   <option>Breakfast</option>
-                                  <option>Lunch</option>
-                                  <option>Dinner</option>
+                                  <option>Chicken</option>
                                   <option>Dessert</option>
-                                </select>
-                              </div>
-                        </div>
-                        <div>
-                            <div class="select">
-                                <select>
-                                  <option>Time needed</option>
-                                  <option>10-20 min</option>
-                                  <option>20-40 min</option>
-                                  <option>40-90 min</option>
-                                  <option>2+ hours</option>
+                                  <option>Goat</option>
+                                  <option>Lamb</option>
+                                  <option>Miscellaneous</option>
+                                  <option>Pasta</option>
+                                  <option>Pork</option>
+                                  <option>Seafood</option>
+                                  <option>Side</option>
+                                  <option>Starter</option>
+                                  <option>Vegan</option>
+                                  <option>Vegetarian</option>
                                 </select>
                               </div>
                         </div>
                     </div>
                     <div class="column">
                         <div class="buttons">
-                            <button class="button is-primary">run search criteria</button>
+                            <button class="button is-primary" id="runSearchFood">run search criteria</button>
                         </div>
                         <div class="buttons">
                             <button class="button is-primary" id="randomRecipe">roll the dice (random)</button>
@@ -69,7 +62,7 @@
                     </div>
                 </div>
                 <div>
-                    <h1 id="recipe-title">title</h1>
+                    <h2 id="recipe-title">title:</h2>
                 </div>
                 <figure class="image is-128x128">
                     <img id="recipe-image" src="" alt="">
@@ -78,14 +71,14 @@
                     <ul id="recipe-ingredients"></ul>
                 </div>
                 <div>
-                    <p id="recipe-directions">directions</p>
+                    <p id="recipe-directions">directions:</p>
                 </div>
                 <div class="buttons">
-                    <button class="button is-primary">save recipe</button>
+                    <button class="button is-primary" id="save">save recipe</button>
                 </div>
             </div>
         <div class="column is-half" id="drinks">
-                <h1>Next choose your beverage (enter any or all feilds)</h1>
+                <h2>Next choose your beverage (enter any or all feilds):</h2>
                 <div class="columns is-mobile">
                     <div class="column">
                         <div class="field">
@@ -114,7 +107,7 @@
                     </div>
                 </div>
                 <div>
-                    <h1 id="drink-title">title</h1>
+                    <h2 id="drink-title">title:</h2>
                 </div>
                 <figure class="image is-128x128">
                     <img id="drink-image" src="" alt="">
@@ -123,7 +116,7 @@
                     <ul id="drink-ingredients"></ul>
                 </div>
                 <div>
-                    <p id="drink-directions">directions</p>
+                    <p id="drink-directions">directions:</p>
                 </div>
                 <div class="buttons">
                     <button class="button is-primary" id="drinkSave">save drink</button>
@@ -132,7 +125,7 @@
         </div>                
         <div class="columns jokes">
             <div class="column">
-                <h1>Joke time!!</h1>
+                <h2>Joke time!!</h2>
                 <div>
                     <p id="jokes">jokes</p>
                 </div>
@@ -140,7 +133,7 @@
         </div>
         <footer class="footer">
             <div class="content has-text-centered">
-              <p>Professionally designed by: Brian, Jack, and Mike.</p>
+              <p>&#169; Professionally designed by: Brian, Jack, and Mike.</p>
             </div>
           </footer>
     </div>
