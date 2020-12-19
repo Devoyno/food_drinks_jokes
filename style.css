@@ -1,8 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Andika+New+Basic&family=Courgette&display=swap');
+
 body {
-    background-color: rgb(238, 238, 238);
+    height: 100%;
+    background-color: rgb(236, 236, 236);
+    background-image: url("https://i.pinimg.com/originals/cd/bd/38/cdbd380f254fe3b9f969ddf81ae87481.jpg");
+    background-size: cover;
+    font-family: 'Andika New Basic', sans-serif;
 }
 
-.buttons {
+.title {
+    color: white;
+    font-family: 'Courgette', cursive;
+    font-size: 75px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    
+}
+
+.select {
     margin-top: 10px;
 }
 
@@ -11,26 +26,78 @@ body {
     border: 2px solid black;
     border-radius: 5px;
     background-image: url("https://wallpaperaccess.com/full/271679.jpg");
-    
+    background-size: cover;
 }
+
 #storedRecipe {
     
 }
+
 #recipe {
     border: 2px solid black;
     border-radius: 5px;
+    background-color: rgb(213, 216, 223);
 }
+
+#food {
+    border: 1px solid black;
+}
+
 #drinks {
-    border: 2px solid black;
-    border-radius: 5px;
+    border: 1px solid black;
 }
+
 .jokes {
     border: 2px solid black;
     border-radius: 5px;
     text-align: center;
     font-size: larger;
+    margin-top: 10px;
+    background-color: rgb(213, 216, 223)
 }
-footer {
-    
+
+.footer {
     font-size: 15px;
+    padding: unset;
+    background-color: rgb(236, 236, 236)
 }
+
+.buttons {
+    margin-top:10px;
+}
+
+.input {
+    margin-top:10px;
+}
+
+#recipe-directions {
+    margin-top: 22px;;
+}
+
+#randomRecipe {
+    width: 200px;
+    border: 1px solid gray;
+}
+#runSearchFood {
+    width: 200px;
+    border: 1px solid gray;
+}
+#criteria {
+    width: 200px;
+    border: 1px solid gray;
+}
+#randomDrink {
+    width: 200px;
+    border: 1px solid gray;
+}
+
+#save {
+    border: 1px solid gray;
+}
+
+#view-saved {
+    border: 1px solid gray;
+}
+
+
+

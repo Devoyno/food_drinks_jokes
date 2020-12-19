@@ -18,11 +18,11 @@
             </div>
         </div>
         <div class="buttons" id="StoredRecipe">
-            <button class="button is-primary">View saved recipes</button>
+            <button class="button is-primary" id="view-saved">View saved recipes</button>
         </div>
         <div class="columns" id="recipe">
-            <div class="column is-half">
-                <h2>First choose your meal (enter any or all fields)</h2>
+            <div class="column is-half" id="food">
+                <h2>First choose your meal (enter any or all fields):</h2>
                 <div class="columns is-mobile">
                     <div class="column">
                         <div class="field">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="column">
                         <div class="buttons">
-                            <button class="button is-primary">run search criteria</button>
+                            <button class="button is-primary" id="runSearchFood">run search criteria</button>
                         </div>
                         <div class="buttons">
                             <button class="button is-primary" id="randomRecipe">roll the dice (random)</button>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div>
-                    <h2 id="recipe-title">title</h2>
+                    <h2 id="recipe-title">title:</h2>
                 </div>
                 <figure class="image is-128x128">
                     <img id="recipe-image" src="" alt="">
@@ -71,14 +71,14 @@
                     <ul id="recipe-ingredients"></ul>
                 </div>
                 <div>
-                    <p id="recipe-directions">directions</p>
+                    <p id="recipe-directions">directions:</p>
                 </div>
                 <div class="buttons">
-                    <button class="button is-primary">save recipe</button>
+                    <button class="button is-primary" id="save">save recipe</button>
                 </div>
             </div>
         <div class="column is-half" id="drinks">
-                <h2>Next choose your beverage (enter any or all feilds)</h2>
+                <h2>Next choose your beverage (enter any or all feilds):</h2>
                 <div class="columns is-mobile">
                     <div class="column">
                         <div class="field">
@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <div>
-                    <h2 id="drink-title">title</h2>
+                    <h2 id="drink-title">title:</h2>
                 </div>
                 <figure class="image is-128x128">
                     <img id="drink-image" src="" alt="">
@@ -117,10 +117,10 @@
                     <div id="drink-ingredients"></div>
                 </div>
                 <div>
-                    <p id="drink-directions">directions</p>
+                    <p id="drink-directions">directions:</p>
                 </div>
                 <div class="buttons">
-                    <button class="button is-primary">save drink</button>
+                    <button class="button is-primary" id="save">save drink</button>
                 </div>
             </div>
         </div>                
@@ -134,7 +134,7 @@
         </div>
         <footer class="footer">
             <div class="content has-text-centered">
-              <p>Professionally designed by: Brian, Jack, and Mike.</p>
+              <p>&#169; Professionally designed by: Brian, Jack, and Mike.</p>
             </div>
           </footer>
     </div>
