@@ -1,56 +1,217 @@
-// When the Random Meal button is clicked,
+var savedMeals = [];
+
+// Click event handler for the button to get a random recipe
 $("#randomRecipe").click(function(event){
     event.preventDefault();
-    var searchType = "random.php";
-    getMeal(searchType);
+    var queryURL = "https://www.themealdb.com/api/json/v1/1/random.php";
+    getRandomMeal(queryURL);
 });
-// Function to get the random meal
-function getMeal(searchType){
-    var queryURL = "https://www.themealdb.com/api/json/v1/1/" + searchType;
+
+// Function to get saved recipes
+function getSavedMeals(){
+    if(!localStorage.getItem("SavedMeals")){
+        return;
+    }
+    savedMeals = [JSON.parse(localStorage.getItem("SavedMeals"))];
+    for (i = 0; i < savedMeals[0].length; i++){
+        $('<option/>').text(savedMeals[0][i].name).appendTo("#StoredRecipe");
+    };
+}
+
+// Call to get the saved recipes
+getSavedMeals();
+
+// Function to get a random meal recipe
+function getRandomMeal(queryURL){
+
+    $("#recipeDetails").empty();
+
     $.ajax({
         url: queryURL,
         method: "GET"
     })
     .then(function(response){
-        console.log(response);
-        $("#recipe-ingredients").empty();
+        $("#recipeDetails").html("<div><h2 id='recipe-title'></h2></div><figure class='image is-128x128'><img id='recipe-image' src='' alt=''></figure><div><ul id='recipe-ingredients'></ul></div><div><p id='recipe-directions'></p></div>");
         var recipeTitle = response.meals[0].strMeal;
-        $("#recipe-title").text(recipeTitle);
+        $("#recipe-title").html("<strong>" + recipeTitle + "</strong>");
         var recipeImage = response.meals[0].strMealThumb;
         $("#recipe-image").attr("src", recipeImage);
         $("#recipe-image").attr("alt", recipeTitle);
         $("#recipe-image").attr("title", recipeTitle);
+        $("#recipe-ingredients").append($("<li>").html("<strong>Ingredients:</strong>"));
         for (i = 1; i < 21; i++){
-            if (!response.meals[0]["strMeasure" + i.toString()]){
+            if (response.meals[0]["strMeasure" + i.toString()] === "" || response.meals[0]["strMeasure" + i.toString()] == null){
             }
-            var newIngred = $("<li>").text(response.meals[0]["strMeasure" + i.toString()] + " " + response.meals[0]["strIngredient" + i.toString()]);
-            $("#recipe-ingredients").append(newIngred);
+            else{
+                var newIngred = $("<li>").text(response.meals[0]["strMeasure" + i.toString()] + " " + response.meals[0]["strIngredient" + i.toString()]);
+                $("#recipe-ingredients").append(newIngred);
+            }
         }
         var recipeInstr = response.meals[0].strInstructions;
-        $("#recipe-directions").text(recipeInstr);
+        $("#recipe-directions").html("<strong>Directions:</strong><br>" + recipeInstr);
+    }) 
+}
+
+// Function to get the meal recipe by Category
+function getMealByCategory(queryURL){
+
+    $("#recipeDetails").empty();
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
     })
-};
+    .then(function(response){
+        $("#recipeDetails").html("<div><h2 id='recipe-title'></h2></div><figure class='image is-128x128'><img id='recipe-image' src='' alt=''></figure><div><ul id='recipe-ingredients'></ul></div><div><p id='recipe-directions'></p></div>");
+        var recipe_num = Math.floor(Math.random() * response.meals.length);
+        var meal_name = response.meals[recipe_num].strMeal;
+        var recipeTitle = meal_name;
+        $("#recipe-title").html("<strong>" + recipeTitle + "</strong>");
+        var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + meal_name;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        .then(function(response){
+            var recipeImage = response.meals[0].strMealThumb;
+            $("#recipe-image").attr("src", recipeImage);
+            $("#recipe-image").attr("alt", recipeTitle);
+            $("#recipe-image").attr("title", recipeTitle);
+            $("#recipe-ingredients").append($("<li>").html("<strong>Ingredients:</strong>"));
+            for (i = 1; i < 21; i++){
+                if (response.meals[0]["strMeasure" + i.toString()] === "" || response.meals[0]["strMeasure" + i.toString()] == null){
+                }
+                else{
+                    var newIngred = $("<li>").text(response.meals[0]["strMeasure" + i.toString()] + " " + response.meals[0]["strIngredient" + i.toString()]);
+                    $("#recipe-ingredients").append(newIngred);
+                }
+            }
+            var recipeInstr = response.meals[0].strInstructions;
+            $("#recipe-directions").html("<strong>Directions:</strong><br>" + recipeInstr);
+        })
+    })
+    $("#meal_cat").val("Meal Category");
+}
 
-// When the user clicks the search button,
-// if the user types a meal name in the text field
-// and click the SEARCH button, 
-// it will return a recipe that is named as such.
+// Function to get the meal recipe by name
+function getMealByName(queryURL){
 
-// When the user chooses a meal type from a drop-down menu,
-// and presses the SEARCH button, 
-// it will return a random recipe that is a meal of that type.
+    $("#recipeDetails").empty();
 
-// When the user enters the total amount of time that they want 
-// the meal to take to make and press the SEARCH button,
-// it will return a random recipe that will take that long to make.
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+    .then(function(response){
+        $("#recipeDetails").html("<div><h2 id='recipe-title'></h2></div><figure class='image is-128x128'><img id='recipe-image' src='' alt=''></figure><div><ul id='recipe-ingredients'></ul></div><div><p id='recipe-directions'></p></div>");
+        if (response.meals == null){
+            $("#recipe-title").html("<strong>No Results Found!</strong>");
+            return;
+        }
+        var recipe_num = Math.floor(Math.random() * response.meals.length);
+        var meal_name = response.meals[recipe_num].strMeal;
+        var recipeTitle = meal_name;
+        $("#recipe-title").html("<strong>" + recipeTitle + "</strong>");
+        var recipeImage = response.meals[recipe_num].strMealThumb;
+        $("#recipe-image").attr("src", recipeImage);
+        $("#recipe-image").attr("alt", recipeTitle);
+        $("#recipe-image").attr("title", recipeTitle);
+        $("#recipe-ingredients").append($("<li>").html("<strong>Ingredients:</strong>"));
+        for (i = 1; i < 21; i++){
+            if (response.meals[recipe_num]["strMeasure" + i.toString()] === "" || response.meals[recipe_num]["strMeasure" + i.toString()] == null){
+            }
+            else{
+                var newIngred = $("<li>").text(response.meals[recipe_num]["strMeasure" + i.toString()] + " " + response.meals[recipe_num]["strIngredient" + i.toString()]);
+                $("#recipe-ingredients").append(newIngred);
+            }
+        }
+        var recipeInstr = response.meals[recipe_num].strInstructions;
+        $("#recipe-directions").html("<strong>Directions:</strong><br>" + recipeInstr);
+    })
+    $("#meal_name").val("");
+    $("#meal_name").attr("placeholder", "Meal Name...");
+}
 
-// When the user likes a recipe and wants to save it,
-// the user can click the save button and it will save that recipe into 
-// local storage (by ID)
+// Function to get the meal by Name and Category
+function getMealByNameAndCategory(queryURL, meal_cat){
 
-// When the user wants to review a saved meal recipe, 
-// When the recall button is clicked,
-// the user can see the saved meal recipes and choose to view one.
+    $("#recipeDetails").empty();
 
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+    .then(function(response){
+        $("#recipeDetails").html("<div><h2 id='recipe-title'></h2></div><figure class='image is-128x128'><img id='recipe-image' src='' alt=''></figure><div><ul id='recipe-ingredients'></ul></div><div><p id='recipe-directions'></p></div>");
+        if (response.meals == null){
+            $("#recipe-title").html("<strong>No Results Found!</strong>");
+            return;
+        }
+        var recipe_num = Math.floor(Math.random() * response.meals.length);
+        if (response.meals[recipe_num].strCategory !== meal_cat){
+            var recipe_num = Math.floor(Math.random() * response.meals.length);
+        }
+        if (response.meals[recipe_num].strCategory !== meal_cat){
+            $("#recipe-title").html("<strong>No Results Found!</strong>");
+            return;
+        }
+        var meal_name = response.meals[recipe_num].strMeal;
+        var recipeTitle = meal_name;
+        $("#recipe-title").html("<strong>" + recipeTitle + "</strong>");
+        var recipeImage = response.meals[recipe_num].strMealThumb;
+        $("#recipe-image").attr("src", recipeImage);
+        $("#recipe-image").attr("alt", recipeTitle);
+        $("#recipe-image").attr("title", recipeTitle);
+        $("#recipe-ingredients").append($("<li>").html("<strong>Ingredients:</strong>"));
+        for (i = 1; i < 21; i++){
+            if (response.meals[recipe_num]["strMeasure" + i.toString()] === "" || response.meals[recipe_num]["strMeasure" + i.toString()] == null){
+            }
+            else{
+                var newIngred = $("<li>").text(response.meals[recipe_num]["strMeasure" + i.toString()] + " " + response.meals[recipe_num]["strIngredient" + i.toString()]);
+                $("#recipe-ingredients").append(newIngred);
+            }
+        }
+        var recipeInstr = response.meals[recipe_num].strInstructions;
+        $("#recipe-directions").html("<strong>Directions:</strong><br>" + recipeInstr);
+    })
+    $("#meal_name").val("");
+    $("#meal_name").attr("placeholder", "Meal Name...");
+    $("#meal_cat").val("Meal Category");
+}
 
+// Click event handler for the search button
+$("#searchRecipe").click(function(event){
+    event.preventDefault();
+    if ($("#meal_name").val() === "" && $("#meal_cat :selected").val() !== "Meal Category"){
+        var meal_cat = $("#meal_cat :selected").val();
+        var queryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + meal_cat;
+        getMealByCategory(queryURL);
+    }
+    else if ($("#meal_name").val() && $("#meal_cat :selected").val() === "Meal Category"){
+        var meal_name = $("#meal_name").val();
+        var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + meal_name;
+        getMealByName(queryURL);
+    }
+    else if ($("#meal_name").val() !== "" && $("#meal_cat :selected").val() !== "Meal Category"){
+        var meal_name = $("#meal_name").val();
+        var meal_cat = $("#meal_cat :selected").val();
+        var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + meal_name;
+        getMealByNameAndCategory(queryURL, meal_cat);
+    }
+});
 
+// Click event handler for the save recipe button
+$("#saveRecipe").click(function(){
+    localStorage.getItem("SavedMeals");
+    var mealToSave = {"name": $("#recipe-title").text()};
+    savedMeals.push(mealToSave);
+    localStorage.setItem("SavedMeals", JSON.stringify(savedMeals));
+    return (savedMeals);
+})
+
+// Change event handler for when a user picks a saved recipe from the saved recipe drop-down menu
+$("#StoredRecipe").change(function(){
+    var meal_name = $("#StoredRecipe").val();
+    var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + meal_name;
+    getMealByName(queryURL);
+})
