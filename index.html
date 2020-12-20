@@ -17,9 +17,14 @@
               </h1>
             </div>
         </div>
-        <div class="buttons" id="StoredRecipe">
-            <button class="button is-primary">View saved recipes</button>
+        
+        <div class="select">
+            <!-- Drop-down for saved recipes -->
+            <select id="StoredRecipe">
+                <option>Saved Recipes</option>
+            </select>
         </div>
+
         <div class="columns" id="recipe">
             <div class="column is-half">
                 <h2>First choose your meal (enter any or all fields)</h2>
@@ -27,12 +32,12 @@
                     <div class="column">
                         <div class="field">
                             <div class="control">
-                                <input type="text" class="input" placeholder="Meal Name...">
+                                <input id="meal_name" type="text" class="input" placeholder="Meal Name...">
                             </div>
                         </div> 
                         <div>
                             <div class="select">
-                                <select>
+                                <select id="meal_cat">
                                   <option>Meal Category</option>
                                   <option>Beef</option>
                                   <option>Breakfast</option>
@@ -51,41 +56,23 @@
                                 </select>
                               </div>
                         </div>
-                        <div>
-                            <div class="select">
-                                <select>
-                                  <option>Time needed</option>
-                                  <option>10-20 min</option>
-                                  <option>20-40 min</option>
-                                  <option>40-90 min</option>
-                                  <option>2+ hours</option>
-                                </select>
-                              </div>
-                        </div>
                     </div>
                     <div class="column">
                         <div class="buttons">
-                            <button class="button is-primary">run search criteria</button>
+                            <button class="button is-primary" id="searchRecipe">run search criteria</button>
                         </div>
                         <div class="buttons">
                             <button class="button is-primary" id="randomRecipe">roll the dice (random)</button>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <h2 id="recipe-title">title</h2>
+
+                <!-- Empty div to display recipe details i.e. recipe name, recipe thumbnail, ingredient list, directions -->
+                <div id="recipeDetails">
                 </div>
-                <figure class="image is-128x128">
-                    <img id="recipe-image" src="" alt="">
-                </figure>
-                <div>
-                    <ul id="recipe-ingredients"></ul>
-                </div>
-                <div>
-                    <p id="recipe-directions">directions</p>
-                </div>
+
                 <div class="buttons">
-                    <button class="button is-primary">save recipe</button>
+                    <button class="button is-primary" id="saveRecipe">save recipe</button>
                 </div>
             </div>
         <div class="column is-half" id="drinks">
