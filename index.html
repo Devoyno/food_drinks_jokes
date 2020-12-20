@@ -17,13 +17,24 @@
               </h1>
             </div>
         </div>
-         <div class="select">
-            <!-- Drop-down for saved recipes -->
-            <select id="StoredRecipe">
-                <option>Saved Recipes</option>
-            </select>
+        <div class="columns">
+            <div class="column">
+                <div class="select">
+                <!-- Drop-down for saved recipes -->
+                <select id="StoredRecipe">
+                    <option>Saved Recipes</option>
+                </select>
+                </div>
+            </div>
+            <div class="column">
+                <div class="select">
+                <!-- Drop-down for saved recipes -->
+                <select id="StoredDrinks">
+                    <option>Saved Drinks</option>
+                </select>
+                </div>
+            </div>
         </div>
-
         <div class="columns" id="recipe">
             <div class="column is-half" id="food">
                 <h2>First choose your meal (enter any or all fields):</h2>
@@ -111,7 +122,7 @@
                     </div>
                 </div>
                 <div>
-                    <h2 id="drink-title">title:</h2>
+                    <h2 id="drink-title"></h2>
                 </div>
                 <figure class="image is-128x128">
                     <img id="drink-image" src="" alt="">
@@ -120,7 +131,7 @@
                     <ul id="drink-ingredients"></ul>
                 </div>
                 <div>
-                    <p id="drink-directions">directions:</p>
+                    <p id="drink-directions"></p>
                 </div>
                 <div class="buttons">
                     <button class="button is-primary" id="drinkSave">save drink</button>
