@@ -29,10 +29,6 @@ body {
     background-size: cover;
 }
 
-#storedRecipe {
-    
-}
-
 #recipe {
     border: 2px solid black;
     border-radius: 5px;
@@ -70,28 +66,29 @@ body {
     margin-top:10px;
 }
 
-#recipe-directions {
-    margin-top: 22px;;
+#recipe-directions, #drink-directions {
+    margin-top: 22px;
+    margin-bottom: 10px;
 }
 
 #randomRecipe {
-    width: 200px;
+    width: 140px;
     border: 1px solid gray;
 }
 #runSearchFood {
-    width: 200px;
+    width: 140px;
     border: 1px solid gray;
 }
 #criteria {
-    width: 200px;
+    width: 140px;
     border: 1px solid gray;
 }
 #randomDrink {
-    width: 200px;
+    width: 140px;
     border: 1px solid gray;
 }
 
-#save {
+#saveRecipe, #drinkSave {
     border: 1px solid gray;
 }
 
@@ -99,5 +96,8 @@ body {
     border: 1px solid gray;
 }
 
+#recipe-ingredients, #drink-ingredients {
+    margin-top: 10px;
+}
 
 

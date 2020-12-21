@@ -12,9 +12,10 @@ function getSavedMeals(){
     if(!localStorage.getItem("SavedMeals")){
         return;
     }
-    savedMeals = [JSON.parse(localStorage.getItem("SavedMeals"))];
-    for (i = 0; i < savedMeals[0].length; i++){
-        $('<option/>').text(savedMeals[0][i].name).appendTo("#StoredRecipe");
+    var meals = localStorage.getItem("SavedMeals");
+    savedMeals = meals.split(",");
+    for (i = 0; i < savedMeals.length; i++){
+        $('<option/>').text(savedMeals[i]).appendTo("#StoredRecipe");
     };
 }
 
@@ -180,7 +181,7 @@ function getMealByNameAndCategory(queryURL, meal_cat){
 }
 
 // Click event handler for the search button
-$("#searchRecipe").click(function(event){
+$("#runSearchFood").click(function(event){
     event.preventDefault();
     if ($("#meal_name").val() === "" && $("#meal_cat :selected").val() !== "Meal Category"){
         var meal_cat = $("#meal_cat :selected").val();
@@ -202,11 +203,16 @@ $("#searchRecipe").click(function(event){
 
 // Click event handler for the save recipe button
 $("#saveRecipe").click(function(){
-    localStorage.getItem("SavedMeals");
-    var mealToSave = {"name": $("#recipe-title").text()};
-    savedMeals.push(mealToSave);
-    localStorage.setItem("SavedMeals", JSON.stringify(savedMeals));
-    return (savedMeals);
+    console.log(savedMeals);
+    var mealToSave = $("#recipe-title").text();
+    console.log(mealToSave);
+    console.log("saving meal");
+    if (savedMeals.indexOf(mealToSave) < 0){
+        savedMeals.push(mealToSave);
+        savedMeals = savedMeals.toString();
+        localStorage.setItem("SavedMeals", savedMeals);
+        $('<option/>').text(mealToSave).appendTo("#StoredRecipe");
+    }
 })
 
 // Change event handler for when a user picks a saved recipe from the saved recipe drop-down menu
