@@ -209,7 +209,6 @@ $("#saveRecipe").click(function(){
     console.log("saving meal");
     if (savedMeals.indexOf(mealToSave) < 0){
         savedMeals.push(mealToSave);
-        savedMeals = savedMeals.toString();
         localStorage.setItem("SavedMeals", savedMeals);
         $('<option/>').text(mealToSave).appendTo("#StoredRecipe");
     }
