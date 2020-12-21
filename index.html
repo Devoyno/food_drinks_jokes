@@ -1,162 +1,177 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>What's for Dinner</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-  <section class="section">
-    <div class="container">
-        <div class="hero-body">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>What's for Dinner</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <section class="section">
             <div class="container">
-              <h1 class="title">
-              What's for Dinner
-              </h1>
-            </div>
-        </div>
-        <div class="columns">
-            <div class="column">
-                <div class="select">
-                <!-- Drop-down for saved recipes -->
-                <select id="StoredRecipe">
-                    <option>Saved Recipes</option>
-                </select>
+
+                <div class="hero-body">
+                    <div class="container">
+                        <h1 class="title">
+                            What's for Dinner
+                        </h1>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="select">
-                <!-- Drop-down for saved recipes -->
-                <select id="StoredDrinks">
-                    <option>Saved Drinks</option>
-                </select>
-                </div>
-            </div>
-        </div>
-        <div class="columns" id="recipe">
-            <div class="column is-half" id="food">
-                <h2>First choose your meal (enter any or all fields):</h2>
-                <div class="columns is-mobile">
+
+                <div class="columns">
+
                     <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <input id="meal_name" type="text" class="input" placeholder="Meal Name...">
+                        <div class="select">
+                            <!-- Drop-down for saved recipes -->
+                            <select id="StoredRecipe">
+                                <option>Saved Recipes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="select">
+                            <!-- Drop-down for saved recipes -->
+                            <select id="StoredDrinks">
+                                <option>Saved Drinks</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="columns" id="recipe">
+
+                    <div class="column is-half" id="food">
+                        <h2>First choose your meal (enter any or all fields):</h2>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <div class="field">
+                                    <div class="control">
+                                        <input id="meal_name" type="text" class="input" placeholder="Meal Name...">
+                                    </div>
+                                </div> 
+                                <div>
+                                    <div class="select">
+                                        <select id="meal_cat">
+                                            <option>Meal Category</option>
+                                            <option>Beef</option>
+                                            <option>Breakfast</option>
+                                            <option>Chicken</option>
+                                            <option>Dessert</option>
+                                            <option>Goat</option>
+                                            <option>Lamb</option>
+                                            <option>Miscellaneous</option>
+                                            <option>Pasta</option>
+                                            <option>Pork</option>
+                                            <option>Seafood</option>
+                                            <option>Side</option>
+                                            <option>Starter</option>
+                                            <option>Vegan</option>
+                                            <option>Vegetarian</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                        </div> 
+
+                            <div class="column">
+
+                                <div class="buttons">
+                                    <button class="button is-primary" id="runSearchFood">Search</button>
+                                </div>
+
+                                <div class="buttons">
+                                    <button class="button is-primary" id="randomRecipe"><span style="font-size: small;">Roll the Dice (Random)</span></button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Empty div to display recipe details i.e. recipe name, recipe thumbnail, ingredient list, directions -->
+                        <div id="recipeDetails">
+                        </div>
+
+                        <div class="buttons">
+                            <button class="button is-primary" id="saveRecipe">Save Recipe</button>
+                        </div>
+
+                    </div>
+
+                    <div class="column is-half" id="drinks">
+                        <h2>Next choose your beverage (enter any or all feilds):</h2>
+                        <div class="columns is-mobile">
+
+                            <div class="column">
+                                <div class="field">
+                                    <div class="select" >
+                                        <select id="ingredient">
+                                            <option>main ingredient</option>
+                                            <option>Gin</option>
+                                            <option>Vodka</option>
+                                            <option>Whiskey</option>
+                                            <option>Tequila</option>
+                                            <option>Rum</option>
+                                            <option>Champagne</option>
+                                            <option>Everclear</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="column">
+                                <div class="buttons">
+                                    <button class="button is-primary" id="criteria">Search</button>
+                                </div>
+                                <div class="buttons">
+                                    <button class="button is-primary" id="randomDrink"><span style="font-size: small;">Roll the Dice (Random)</span></button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="drinkDetails">
+                        <!-- <div>
+                            <h2 id="drink-title"></h2>
+                        </div>
+                        <figure class="image is-128x128">
+                            <img id="drink-image" src="" alt="">
+                        </figure>
                         <div>
-                            <div class="select">
-                                <select id="meal_cat">
-                                  <option>Meal Category</option>
-                                  <option>Beef</option>
-                                  <option>Breakfast</option>
-                                  <option>Chicken</option>
-                                  <option>Dessert</option>
-                                  <option>Goat</option>
-                                  <option>Lamb</option>
-                                  <option>Miscellaneous</option>
-                                  <option>Pasta</option>
-                                  <option>Pork</option>
-                                  <option>Seafood</option>
-                                  <option>Side</option>
-                                  <option>Starter</option>
-                                  <option>Vegan</option>
-                                  <option>Vegetarian</option>
-                                </select>
-                              </div>
+                            <ul id="drink-ingredients"></ul>
+                        </div>
+                        <div>
+                            <p id="drink-directions"></p>
+                        </div> -->
+                        </div>
+
+                        <div class="buttons">
+                            <button class="button is-primary" id="drinkSave">Save Drink</button>
                         </div>
                     </div>
+                </div> 
+
+                <div class="columns jokes">
                     <div class="column">
-                        <div class="buttons">
-
-                            <button class="button is-primary" id="searchRecipe">run search criteria</button>
-
-
-                        </div>
-                        <div class="buttons">
-                            <button class="button is-primary" id="randomRecipe">roll the dice (random)</button>
+                        <h2>Joke time!!</h2>
+                        <div>
+                            <p id="jokes">jokes</p>
                         </div>
                     </div>
                 </div>
 
-
-                <!-- Empty div to display recipe details i.e. recipe name, recipe thumbnail, ingredient list, directions -->
-                <div id="recipeDetails">
-
-                </div>
-
-                <div class="buttons">
-
-                    <button class="button is-primary" id="saveRecipe">save recipe</button>
-
-                </div>
-            </div>
-        <div class="column is-half" id="drinks">
-                <h2>Next choose your beverage (enter any or all feilds):</h2>
-                <div class="columns is-mobile">
-                    <div class="column">
-                        <div class="field">
-                            <div class="select" >
-                                <select id="ingredient">
-                                  <option>main ingredient</option>
-                                  <option>Gin</option>
-                                  <option>Vodka</option>
-                                  <option>Whiskey</option>
-                                  <option>Tequila</option>
-                                  <option>Rum</option>
-                                  <option>Champagne</option>
-                                  <option>Everclear</option>
-                                </select>
-                              </div>
-                        </div>
-
+                <footer class="footer">
+                    <div class="content has-text-centered">
+                        <p>&#169; Professionally designed by: Brien, Jack, and Mike.</p>
                     </div>
-                    <div class="column">
-                        <div class="buttons">
-                            <button class="button is-primary" id="criteria">run search criteria</button>
-                        </div>
-                        <div class="buttons">
-                            <button class="button is-primary" id="randomDrink">roll the dice (random)</button>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h2 id="drink-title"></h2>
-                </div>
-                <figure class="image is-128x128">
-                    <img id="drink-image" src="" alt="">
-                </figure>
-                <div>
-                    <ul id="drink-ingredients"></ul>
-                </div>
-                <div>
-                    <p id="drink-directions"></p>
-                </div>
-                <div class="buttons">
-                    <button class="button is-primary" id="drinkSave">save drink</button>
-                </div>
+                </footer>
+
             </div>
-        </div>                
-        <div class="columns jokes">
-            <div class="column">
-                <h2>Joke time!!</h2>
-                <div>
-                    <p id="jokes">jokes</p>
-                </div>
-            </div>
-        </div>
-        <footer class="footer">
-            <div class="content has-text-centered">
-              <p>&#169; Professionally designed by: Brian, Jack, and Mike.</p>
-            </div>
-          </footer>
-    </div>
-  </section>
-  </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="meals.js"></script>
-  <script src="jokes.js"></script>
-  <script src="drinks.js"></script>
-  <script></script>
+
+        </section>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="meals.js"></script>
+    <script src="jokes.js"></script>
+    <script src="drinks.js"></script>
 </html>

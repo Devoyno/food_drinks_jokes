@@ -1,13 +1,14 @@
-var DrinkSave = [];
+var savedDrinks = [];
 
 // saved drinks 
 function getSaveddrinks(){
     if(!localStorage.getItem("DrinkSave")){
         return;
     }
-    savedDrinks = [JSON.parse(localStorage.getItem("DrinkSave"))];
-    for (i = 0; i < savedDrinks[0].length; i++){
-        $('<option/>').text(savedDrinks[0][i].name).appendTo("#StoredDrinks");
+    var drinks = localStorage.getItem("DrinkSave");
+    savedDrinks = drinks.split(",");
+    for (i = 0; i < savedDrinks.length; i++){
+        $('<option/>').text(savedDrinks[i]).appendTo("#StoredDrinks");
     };
 }
 
@@ -26,7 +27,6 @@ $("#randomDrink").on("click", function(event) {
     var searchType = "random.php";
     $("#drink-ingredients").empty();
     drink(searchType);
-    console.log(DrinkSave);
 });
 // by ingredient button 
 $("#criteria").on("click", function(event) {
@@ -57,16 +57,25 @@ $.ajax ({
 }).then(function (response) {
     console.log(response);
     console.log(queryURL)
+
+    $("#drinkDetails").html("<div><h2 id='drink-title'></h2></div><figure class='image is-128x128'><img id='drink-image' src='' alt=''></figure><div><ul id='drink-ingredients'></ul></div><div><p id='drink-directions'></p></div>");
+
     $("#drink-title").html("<h1><strong>" + response.drinks[0].strDrink);
     $("#drink-image").attr("src", response.drinks[0].strDrinkThumb);
 
+    $("#drink-ingredients").append($("<li>").html("<strong>Ingredients:</strong>"));
     while (response.drinks[0]["strIngredient" + number] != null){
-       var ingLi =  $("<li>").text(response.drinks[0]["strMeasure" + number] + " " + response.drinks[0]["strIngredient" + number]);
+        if (response.drinks[0]["strMeasure" + number] == null){
+            response.drinks[0]["strMeasure" + number] = "";
+        }
+        var ingLi =  $("<li>").text(response.drinks[0]["strMeasure" + number] + " " + response.drinks[0]["strIngredient" + number]);
         $("#drink-ingredients").append(ingLi);
         number++;
     };
 
-    $("#drink-directions").text("Directions: " + response.drinks[0].strInstructions);
+    // $("#drink-directions").text("Directions: " + response.drinks[0].strInstructions);
+    response.drinks[0].strInstructions.replace("/r/n", ".");
+    $("#drink-directions").html("<strong>Directions:</strong><br>" + response.drinks[0].strInstructions);
 
 
    
@@ -75,9 +84,13 @@ $.ajax ({
 
  // save button 
  $("#drinkSave").on("click", function(){
-    localStorage.getItem("DrinkSave");
-    var textContent = {name: $("#drink-title").text()};
-    console.log(DrinkSave);
-    DrinkSave.push(textContent);
-    localStorage.setItem("DrinkSave", JSON.stringify(DrinkSave));
+    //localStorage.getItem("DrinkSave");
+    var textContent = $("#drink-title").text();
+    console.log(savedDrinks);
+    if (savedDrinks.indexOf(textContent) < 0){
+        savedDrinks.push(textContent);
+        savedDrinks = savedDrinks.toString();
+        localStorage.setItem("DrinkSave", savedDrinks);
+        $('<option/>').text(textContent).appendTo("#StoredDrinks");
+    }
 });
