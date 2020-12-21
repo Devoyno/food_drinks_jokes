@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Andika+New+Basic&family=Courgette&display=swap');
 
+html {
+    margin: 0;
+    min-height: 100vh;
+}
+
 body {
-    height: 100%;
+    margin: 0;
+    min-height: 100vh;
     background-color: rgb(236, 236, 236);
     background-image: url("https://i.pinimg.com/originals/cd/bd/38/cdbd380f254fe3b9f969ddf81ae87481.jpg");
     background-size: cover;
@@ -12,14 +18,10 @@ body {
     color: white;
     font-family: 'Courgette', cursive;
     font-size: 75px;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: rgb(80, 80, 80);
     
 }
-
-/* .select {
-    margin-top: 10px;
-} */
 
 .hero-body {
     text-align: center;
@@ -38,10 +40,6 @@ body {
 #food, #drinks {
     border: 1px solid black;
 }
-
-/* #drinks {
-    border: 1px solid black;
-} */
 
 .jokes {
     border: 2px solid black;
@@ -62,10 +60,6 @@ body {
     margin-top: 10px;
 }
 
-/* .input {
-    margin-top:10px;
-} */
-
 #recipe-directions, #drink-directions {
     margin-top: 22px;
     margin-bottom: 10px;
@@ -75,26 +69,10 @@ body {
     width: 140px;
     border: 1px solid gray;
 }
-/* #runSearchFood {
-    width: 140px;
-    border: 1px solid gray;
-} */
-/* #criteria {
-    width: 140px;
-    border: 1px solid gray;
-} */
-/* #randomDrink {
-    width: 140px;
-    border: 1px solid gray;
-} */
 
 #saveRecipe, #drinkSave, #view-saved {
     border: 1px solid gray;
 }
-
-/* #view-saved {
-    border: 1px solid gray;
-} */
 
 #recipe-ingredients, #drink-ingredients {
     margin-top: 10px;
