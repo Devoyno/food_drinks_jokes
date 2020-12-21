@@ -73,7 +73,6 @@ $.ajax ({
         number++;
     };
 
-    // $("#drink-directions").text("Directions: " + response.drinks[0].strInstructions);
     response.drinks[0].strInstructions.replace("/r/n", ".");
     $("#drink-directions").html("<strong>Directions:</strong><br>" + response.drinks[0].strInstructions);
 
@@ -84,12 +83,10 @@ $.ajax ({
 
  // save button 
  $("#drinkSave").on("click", function(){
-    //localStorage.getItem("DrinkSave");
     var textContent = $("#drink-title").text();
     console.log(savedDrinks);
     if (savedDrinks.indexOf(textContent) < 0){
         savedDrinks.push(textContent);
-        savedDrinks = savedDrinks.toString();
         localStorage.setItem("DrinkSave", savedDrinks);
         $('<option/>').text(textContent).appendTo("#StoredDrinks");
     }

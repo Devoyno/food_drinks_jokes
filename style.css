@@ -17,10 +17,6 @@ body {
     
 }
 
-/* .select {
-    margin-top: 10px;
-} */
-
 .hero-body {
     text-align: center;
     border: 2px solid black;
@@ -38,10 +34,6 @@ body {
 #food, #drinks {
     border: 1px solid black;
 }
-
-/* #drinks {
-    border: 1px solid black;
-} */
 
 .jokes {
     border: 2px solid black;
@@ -62,10 +54,6 @@ body {
     margin-top: 10px;
 }
 
-/* .input {
-    margin-top:10px;
-} */
-
 #recipe-directions, #drink-directions {
     margin-top: 22px;
     margin-bottom: 10px;
@@ -75,26 +63,10 @@ body {
     width: 140px;
     border: 1px solid gray;
 }
-/* #runSearchFood {
-    width: 140px;
-    border: 1px solid gray;
-} */
-/* #criteria {
-    width: 140px;
-    border: 1px solid gray;
-} */
-/* #randomDrink {
-    width: 140px;
-    border: 1px solid gray;
-} */
 
 #saveRecipe, #drinkSave, #view-saved {
     border: 1px solid gray;
 }
-
-/* #view-saved {
-    border: 1px solid gray;
-} */
 
 #recipe-ingredients, #drink-ingredients {
     margin-top: 10px;
