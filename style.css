@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Andika+New+Basic&family=Courgette&display=swap');
 
+html {
+    margin: 0;
+    min-height: 100vh;
+}
+
 body {
-    height: 100%;
+    margin: 0;
+    min-height: 100vh;
     background-color: rgb(236, 236, 236);
     background-image: url("https://i.pinimg.com/originals/cd/bd/38/cdbd380f254fe3b9f969ddf81ae87481.jpg");
     background-size: cover;
@@ -12,8 +18,8 @@ body {
     color: white;
     font-family: 'Courgette', cursive;
     font-size: 75px;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: rgb(80, 80, 80);
     
 }
 
