@@ -15,7 +15,7 @@ and get a random joke.  The user will be able to save the recipes that he/she li
 
 As a food, drink, and joke connoisseur
 I want to get meal and drink recipes and get jokes
-so that I can feed my guests, serve them drinks, and make them laugh
+so that I can feed my guests, serve them drinks, and make them laugh!
 
 
 ## Acceptance Criteria:
