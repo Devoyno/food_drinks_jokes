@@ -1,22 +1,22 @@
-# food_drinks_jokes
+# What's for Dinner!?
 
 ![Screenshot](ss.png)
 
-##Description:
+## Description:
 
 We are creating a responsive web app using the Bulma CSS framework,
 where a user can search for recipes for meals and drinks/cocktails,
 and get a random joke.  The user will be able to save the recipes that he/she likes and can recall them to view at a later time.
 
 
-##User Story:
+## User Story:
 
 As a food, drink, and joke connoisseur
 I want to get recipes for meals and drinks and get jokes
 So that I can feed my guests, serve them drinks, and make them laugh
 
 
-##Acceptance Criteria:
+## Acceptance Criteria:
 
 Given I am a user that wants recipes for meals and/or drinks/cocktails and/or a random joke…
 
