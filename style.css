@@ -68,6 +68,8 @@ body {
 #randomRecipe, #runSearchFood, #criteria, #randomDrink {
     width: 140px;
     border: 1px solid gray;
+    white-space: normal;
+    height:fit-content;
 }
 
 #saveRecipe, #drinkSave, #view-saved {
@@ -79,11 +81,23 @@ body {
 }
 @media screen and (max-width: 370px) {
     
+    .title {
+        font-size: 50px;        
+    }
+
     .button {
        max-width: min-content;
        height: fit-content;
        white-space: normal;
+       font-size: small;
     }
+}
+
+@media screen and (max-width: 310px) {
+
+    .button {
+        padding: 2px;
+     }
 }
 
 
